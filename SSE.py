@@ -267,20 +267,6 @@ class circuit:
 
         return dV
 
-    def build_generator(self, range_q):
-
-        K = [r[1]-r[0] for r in range_q]
-        N = np.prod(K)
-
-        basis = np.zeros((len(K), N))
-        n = 0
-        for q in product(*[range(r[0], r[1]) for r in range_q]):
-            print(q)
-            basis[:, n] = q
-            n += 1
-
-        return basis
-
 @njit
 def av_deltaV(V, dV, dev_term, control_a, control_b, t):
 
